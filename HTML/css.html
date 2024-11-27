@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- external css -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- internal css -->
+    <style>
+        h1 {
+            color: red;
+            font-size: 100px;
+        }
+
+        p{
+            color: blue;          
+        }
+        span {
+            background-color: yellow;
+        }
+
+        h3{
+            color: salmon;
+        }
+
+        /* if two conflicting styles ahve the same precedence, then defined later will override the earlier one.  */
+        
+        /* h1{
+            color: aqua;
+        } */
+
+        .greet {
+            color: yellowgreen;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1 class="greet">Hello People</h1>
+    <p>Lorem ipsum dolor <span>sit amet consectetur adipisicing elit</span>. Debitis impedit quaerat atque quasi nam sed quibusdam magni, suscipit earum. Dignissimos odit quia veritatis earum perspiciatis nihil eligendi doloribus rem laudantium.</p>
+    <h3 style="color: blue;">hello world</h3>
+    <input type="color">
+    <!-- inline css -->
+    <div style="border: 2px dashed red;" class="greet">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit porro, explicabo cumque voluptatem quod sed, omnis exercitationem libero aliquam magnam ratione obcaecati quidem quis numquam accusantium. Cum doloremque repudiandae beatae!
+    </div>
+</body>
+</html>
