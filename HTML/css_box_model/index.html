@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 300px;
+            height: 200px;
+            box-sizing: content-box;
+            background-color: aquamarine;
+
+            /* top right bottom left  */
+            padding: 10px;  
+            /* top left and right, bottom */
+            padding : 10px 20px 30px;
+            /* top and bottom, left and right */
+            padding: 10px 20px;
+            /* padding-left: 20px; */
+
+            border-width: 5px;
+            border-color: black;
+            border-style:double;
+            /* border: 5px double black; */
+            border-radius: 10%;
+            /* border-top: 5px solid blue;
+             border-left: 2px solid tomato ;
+             border-right: 6px dashed black;
+             border-bottom: 5px solid yellow ; */
+
+             margin: 10px;
+             /* margin-bottom: 20px; */
+        }
+        .box2{
+            width: 300px;
+            height: 200px;
+            box-sizing: border-box;
+            background-color: aquamarine;
+            padding: 10px 20px 10px 20px;
+            border-width: 5px;
+            border-color: black;
+            border-style:double;
+            border-radius: 10%;
+            margin: 10px;
+        }
+
+
+        
+        .text{
+            border: 5px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <h1>Volcanoes 1</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut sapiente ratione fugiat voluptatem doloribus voluptates tenetur optio nisi, maiores libero tempora a, recusandae culpa, vitae consequatur beatae eaque excepturi porro.</p>
+    </div>
+    <!-- <div class="text">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro ipsum inventore est earum, explicabo asperiores minima consectetur aut quaerat, similique iste, sit magni amet veritatis iusto ipsa deserunt mollitia assumenda?
+    </div>
+    <p style="border: 2px solid rgb(25, 52, 133);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dolores blanditiis nam rem dolorum repellendus. Sed fuga mollitia enim qui blanditiis saepe nemo, voluptate similique! Fugit eaque expedita accusamus repellendus?</p> -->
+
+    <div class="box2">
+        <h1>Volcanoes 2</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut sapiente ratione fugiat voluptatem doloribus voluptates tenetur optio nisi, maiores libero tempora a, recusandae culpa, vitae consequatur beatae eaque excepturi porro.</p>
+    </div>
+</body>
+</html>
