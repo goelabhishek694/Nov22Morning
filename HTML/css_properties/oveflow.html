@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 2px solid red;
+            width: 200px;
+            height: 200px;
+            /* overflow: hidden; */
+
+            /* irrespective of content overflowing or not scroll bar would be visible */
+            /* overflow: scroll; */
+
+            /* if content is overflowing then scrollbar would be visible */
+            overflow: auto;
+
+            /* this is by default property which shows the overflown content */
+            /* overflow: visible; */
+            padding: 10px;
+            margin-bottom: 30px;
+            margin-right: 10px;
+        }
+
+        .horizontal-container{
+            font-size: 30px;
+            width: 50px;
+            height: 130px;
+            border: 2px groove black;
+            /* overflow: hidden; */
+            /* scrollbar in horizontal direction only  */
+            /* overflow: auto;
+            overflow-y: hidden; */
+
+            /* scrollbar in vertical direction only  */
+            overflow: auto;
+            overflow-x: hidden;
+            margin-top: 10px;
+            margin-left: 20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex;">
+    <div class="container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores cumque molestias ab natus nesciunt explicabo qui saepe ea expedita sunt impedit adipisci, praesentium quo fugit! Ut eligendi quae iusto iste eos soluta dolore delectus consequuntur, similique assumenda dignissimos saepe, quibusdam, cum asperiores sit esse error quod inventore atque tempora vitae? Nesciunt autem est possimus et praesentium, unde suscipit aperiam quae error itaque debitis aliquam, impedit natus? Temporibus illum natus pariatur rem commodi eum, quis consectetur mollitia ipsam molestiae tempora aut, corporis quibusdam praesentium debitis minus aliquid repellendus optio! Illum non consectetur natus incidunt numquam eos rerum obcaecati magni eaque!
+    </div>
+
+    <div class="horizontal-container">
+        Scalerferwfeffdhqwihfugefygfyegfygewyfef de suscipit aperiam quae error itaque debitis aliquam, impedit natus? Temporibus illum natus pariatur rem commodi eum, quis consectetur mollitia ipsam molestiae tempora aut, corporis quibusdam praesentium debitis minus aliquid repellendus optio! Illum non consectetur 
+    </div>
+</div>
+</body>
+</html>
