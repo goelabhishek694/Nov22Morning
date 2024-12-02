@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Design Example</title>
+  <style>
+    /* General styles for all devices */
+    body {
+      font-size: 16px;
+      margin: 20px;
+    }
+
+    .container{
+            background-color: tomato;
+            border: 2px grove black;
+            height: 500px;
+            display: flex;
+            flex-direction: row;
+            justify-content:center;
+            align-items: center;
+
+
+        }
+
+        .box{
+            height: 200px;
+            width: 200px;
+            background-color: dodgerblue;
+            margin: 10px;
+        }
+
+    /* Media query for devices with a screen width of 600 pixels or less */
+    @media only screen and (max-width: 600px) {
+      body {
+        font-size: 14px;
+        background-color: lightcoral;
+      }
+      .box1, .box3{
+        display: none;
+      }
+    }
+
+    /* Media query for devices with a screen width between 601 and 900 pixels */
+    @media only screen and (min-width: 601px) and (max-width: 900px) {
+      body {
+        font-size: 18px;
+        background-color: lightblue;
+      }
+      .box2{
+        flex-grow: 2;
+      }
+      .box1{
+        display: block;
+        flex-grow: 1;
+
+      }
+      .box3{
+        display: none;
+      }
+    }
+
+    /* Media query for devices with a screen width of 901 pixels or more */
+    @media only screen and (min-width: 901px) {
+      body {
+        font-size: 20px;
+        background-color: lightgreen;
+      }
+      .box1, .box3{
+        display: block;
+        flex-grow: 1;
+      }
+
+      .box2{
+        flex-grow: 3;
+
+    }
+
+
+  </style>
+</head>
+<body>
+  <h1>Responsive Design Example</h1>
+  <p>This is a simple example demonstrating responsiveness using media queries.</p>
+
+  <div class="container">
+    <div class="box box1">1</div>
+    <div class="box box2">2</div>
+    <div class="box box3">3</div>
+  </div>
+</body>
+</html>
