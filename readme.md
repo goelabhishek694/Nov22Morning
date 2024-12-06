@@ -7,3 +7,7 @@ https://robbowen.digital/
 https://flukeout.github.io/
 https://flexboxfroggy.com/
 https://cssgridgarden.com/
+
+6/12/24
+
+https://www.codecademy.com/resources/docs/css/inheritance

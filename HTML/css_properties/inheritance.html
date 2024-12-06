@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inherit Property Example</title>
+  <style>
+    /* Define a style for the parent element */
+    .parent {
+      color: blue; /* Set text color to blue */
+      font-size: 40px; /* Set font size to 20 pixels */
+      width: 500px;
+      border: 1px solid black;
+      padding: 20px;
+    }
+
+    /* Define a style for the child element */
+    .child {
+      /* color: inherit; Inherit text color from parent */
+      /* font-size: inherit; Inherit font size from parent */
+      border: 1px solid rgb(192, 52, 52);
+    }
+  </style>
+</head>
+<body>
+  <!-- Parent element -->
+  <div class="parent">
+    <!-- Child element -->
+    <p class="child">This text will inherit color and font size from its parent.</p>
+  </div>
+</body>
+</html>
