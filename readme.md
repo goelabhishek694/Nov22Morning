@@ -11,3 +11,6 @@ https://cssgridgarden.com/
 6/12/24
 
 https://www.codecademy.com/resources/docs/css/inheritance
+
+18/12/24
+https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone
