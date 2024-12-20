@@ -14,3 +14,6 @@ https://www.codecademy.com/resources/docs/css/inheritance
 
 18/12/24
 https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone
+
+20/12/24
+https://medium.com/@ks.deepak07/es6-classes-in-javascript-e94a5db9fdb2
