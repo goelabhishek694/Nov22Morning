@@ -49,7 +49,8 @@
 
 // function outer(){
 //     let arrFn =[ ];
-//     for(var i=0;i<3;i++){
+//var is function scoped, this means that all the functions created inside the loop share the same ref to i . 
+//     for(var i=0;i<3;i++){ 
 //         function fn(){
 //             i++;
 //             console.log(i);
@@ -80,8 +81,8 @@
 // arrFn[2](); // 3
 
 function outer() {
-  let arrFn = [];``
-  for (var i = 0; i < 3; i++) {
+  let arrFn = [];
+  for (let i = 0; i < 3; i++) {
     function fn() {
       console.log(i);
     }
