@@ -134,16 +134,101 @@
 // objectValue: Identifies the value assigned to the object.
 
 
-function Class(name, age){
-    this.firstName = name;
-    this.age=age;
-    //
+// function Class(name, age){
+//     this.firstName = name;
+//     this.age=age;
+//     //
+// }
+
+// let c1 = new Class("Venkata",24); //-> empty object is created , this -> {}
+// let c2 = new Class("Karunakar",23);
+// let c3 = new Class("Anbazhagan",21);
+
+// console.log(c1.firstName);
+// console.log(c2.firstName);
+// console.log(c3.firstName);
+
+// let candidate = {
+//     fly:true,
+//     canTalk(){
+//         return "Sorry, cant talk"
+//     }
+// };
+
+// let user = {
+//     canCook : true,
+//     canCode(){
+//         return "can't code"
+//     },
+//     //inheriting the properties and methids of candidate 
+//     __proto__ : candidate
+// };
+
+// console.log(user);
+
+//Object Descriptors
+
+//read-only property
+// const obj ={};
+// Object.defineProperty(obj, "name", {
+//     value : "Scaler",
+//     writable:false,
+//     enumerable: true,
+//     configurable: false
+// });
+
+// console.log(obj.name);
+// obj.name = "InterviewBit" //-> does not happen
+// console.log(obj.name);
+
+//non-enumerable property
+
+// const obj ={};
+// Object.defineProperty(obj, "secret", {
+//     value : "hidden",
+//     writable:true,
+//     enumerable: false,
+//     configurable: false
+// });
+
+// // console.log(obj.secret);
+// // obj.secret = "InterviewBit" //-> does not happen
+// // console.log(obj.secret);
+
+// console.log(Object.keys(obj)); //-> it traverses over the entore object and returns an array of all the keys in object obj 
+// console.log(obj.secret);
+
+// delete obj.secret;
+// console.log(obj.secret);
+
+// //configurable property 
+// const obj ={};
+// Object.defineProperty(obj, "age", {
+//     value : 30,
+//     writable:true,
+//     enumerable: true,
+//     configurable: true
+// });
+
+// obj.age=25;
+// console.log(obj.age);
+// console.log(Object.keys(obj));
+// delete obj.age;
+// console.log(obj.age);
+
+
+let obj = {
+    name:"Scaler"
 }
 
-let c1 = new Class("Venkata",24); //-> empty object is created , this -> {}
-let c2 = new Class("Karunakar",23);
-let c3 = new Class("Anbazhagan",21);
+console.log(Object.getOwnPropertyDescriptor(obj, "name"));
 
-console.log(c1.firstName);
-console.log(c2.firstName);
-console.log(c3.firstName);
+
+
+
+
+
+
+
+
+
