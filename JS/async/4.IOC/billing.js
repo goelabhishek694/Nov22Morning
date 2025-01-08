@@ -3,7 +3,11 @@ console.log("Before");
 let amount = 100000;
 let priceOfOne = 20000;
 
-runMLAlgo(amount,cb);
+// runMLAlgo(amount,cb);
+let p1 = runMLAlgo();
+p1.then((data) => {
+    cb();
+})
 function cb() {
     //deducting the amount from bank
     console.log("deducting payment");
