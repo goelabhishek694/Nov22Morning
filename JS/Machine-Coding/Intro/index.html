@@ -8,7 +8,9 @@
   <body>
     <h1 class="hifine">I am H1</h1>
     <h1 class="hifine">I am another H1</h1>
-    <h2>i am h2</h2>
+    <h2>                    i        am         h2
+        
+    </h2>
     <h2>i am another</h2>
     <h1 id="unique">i am h1</h1>
     <p class="para">
@@ -32,15 +34,19 @@
     <input type="text" />
     <input type="password" />
     <input type="text" id="special" />
-    <div>
-        <p>lorem paren dic</p>
-        <img src="" alt="">
+    <div class="nested">
+        <p style="display: none;">lorem paren dic</p>
+        <img src="./dbed.pmg" alt="">
     </div>
     <button>Click</button>
     <script>
       //returns the first element -> that has h2 tag -> tag slector
       const h2Ele = document.querySelector("h2");
       console.log(h2Ele);
+      console.log(h2Ele.innerText); //focuses only on text , ignore ele that have style diplay:none 
+    //   console.log(h2Ele.innerHTML);
+      console.log(h2Ele.textContent); //considers spaces 
+      
 
       //select an ele with a class -> class selctorn
     //   const h1Ele = document.querySelector(".hifine");
@@ -86,8 +92,31 @@
 
       
       allH1EleArr.forEach(ele => console.log(ele))
-      
 
+      const divEle = document.querySelector(".nested");
+      console.log(divEle);
+      console.log(divEle.innerHTML);
+      console.log(divEle.innerText);
+
+      //styling
+    
+      h2Ele.style.color = "red" ;
+      let pEle = document.querySelector(".para");
+      pEle.style.backgroundColor = "yellow"
+
+
+      //attributes
+      const idName = uniqueH1.getAttribute("id");
+      console.log(idName);
+
+      let attribVal = inputPassword.getAttribute("type");
+      console.log(attribVal);
+
+      const specialInput = document.querySelector("#special");
+      specialInput.setAttribute("type","email")
+      specialInput.setAttribute("class","inputEmail")
+      
+      
     </script>
   </body>
 </html>
