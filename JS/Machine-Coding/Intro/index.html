@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="hifine">I am H1</h1>
+    <h1 class="hifine">I am another H1</h1>
+    <h2>i am h2</h2>
+    <h2>i am another</h2>
+    <h1 id="unique">i am h1</h1>
+    <p class="para">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, saepe,
+      ducimus expedita voluptas distinctio quia accusamus rerum tempora harum
+      laboriosam eveniet necessitatibus doloremque? Earum quasi libero eligendi
+      hic ratione cumque. Dolores nobis voluptate harum consequuntur nam
+      molestiae! Saepe illum, aspernatur voluptatum harum nihil earum ratione
+      eveniet et fugiat libero minus quod nesciunt. Ipsam error maxime sunt
+      earum vitae ea at.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, saepe,
+      ducimus expedita voluptas distinctio quia accusamus rerum tempora harum
+      laboriosam eveniet necessitatibus doloremque? Earum quasi libero eligendi
+      hic ratione cumque. Dolores nobis voluptate harum consequuntur nam
+      molestiae! Saepe illum, aspernatur voluptatum harum nihil earum ratione
+      eveniet et fugiat libero minus quod nesciunt. Ipsam error maxime sunt
+      earum vitae ea at.
+    </p>
+    <input type="text" />
+    <input type="password" />
+    <input type="text" id="special" />
+    <div>
+        <p>lorem paren dic</p>
+        <img src="" alt="">
+    </div>
+    <button>Click</button>
+    <script>
+      //returns the first element -> that has h2 tag -> tag slector
+      const h2Ele = document.querySelector("h2");
+      console.log(h2Ele);
+
+      //select an ele with a class -> class selctorn
+    //   const h1Ele = document.querySelector(".hifine");
+    //   console.log(h1Ele);
+
+      //select an ele with an id -> id selector
+    //   const uniqueH1 = document.querySelector("#unique");
+      const uniqueH1 = document.getElementById("unique");
+      console.log(uniqueH1);
+
+      //attribute selector
+      const inputPassword = document.querySelector('input[type="password"] ');
+      console.log(inputPassword);
+
+      // to select all -> querySelectorAll //nodeList
+      const allH2Ele = document.querySelectorAll("h2");
+      console.log(allH2Ele);
+      //nodelist has few features similar to an array -> indexing, length , forEach
+      //indexing 
+      console.log(allH2Ele[0]);
+      console.log(allH2Ele[1]);
+
+      //length
+      console.log(allH2Ele.length);
+      
+
+      //hof -> forEach
+      allH2Ele.forEach(ele => console.log(ele))
+
+      //HTML Collection -> indexing, length 
+      const allh1Ele = document.getElementsByClassName("hifine"); //html collection
+      console.log(allh1Ele);
+      //indexing
+      console.log(allh1Ele[0]);
+
+      //length
+      console.log(allh1Ele.length);
+
+
+      //if all the functionalitites of an array is needed, we need to convert our nodeList / HTML collection into array 
+      
+      const allH1EleArr = Array.from(allh1Ele);
+
+      
+      allH1EleArr.forEach(ele => console.log(ele))
+      
+
+    </script>
+  </body>
+</html>
