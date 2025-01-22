@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type="text"]{
+            height: 4rem ;
+            width: 400px ;
+            font-size: 30px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="" placeholder="Type Here">
+
+    <script>
+        let input = document.querySelector('input[type="text"]');
+        //eventobj is present in cb function as arg , it contains info about that event 
+        input.addEventListener("keydown", function(eventObj){
+            console.log("keydown is called", eventObj.key);
+        })
+        input.addEventListener("keyup", function(){
+            console.log("keyup is called");
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 400px ;
+            width: 400px ;
+            background-color: salmon;
+            font-size: 80px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    </div>
+    <script>
+        let box = document.querySelector(".box");
+
+        //mousedown
+        box.addEventListener("mousedown",()=>{
+            console.log("mousedown");
+        });
+        //mouseup
+        box.addEventListener("mouseup",()=>{
+            console.log("mouseup");
+        });
+
+        //click = mousedown + mouseup 
+        box.addEventListener("click",()=>{
+            console.log("click");
+            box.innerText = "Hello"
+        });
+
+        //hover - moouseover
+        box.addEventListener("mouseover",()=>{
+            console.log("mouseover");
+            box.style.backgroundColor = "blue"
+        });
+
+        //hover - moouseleave
+        box.addEventListener("mouseleave",()=>{
+            console.log("mouseleave");
+            box.style.backgroundColor = "salmon"
+        });
+
+        //dblclick
+        box.addEventListener("dblclick",()=>{
+            console.log("dblclick");
+            box.innerText = "Bye"
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Shopping List</h1>
+    <ul>
+
+    </ul>
+    <script>
+        // console.time()
+        // let ul = document.querySelector("ul");
+        // for(let i=0;i<10000;i++){
+        //     const li = document.createElement("li");
+        //     li.innerText = i+1;
+        //     ul.appendChild(li);
+        // }
+        // console.timeEnd()
+
+        // console.time()
+        // let ul = document.querySelector("ul");
+        // const temp = document.createElement("div");
+        // for(let i=0;i<10000;i++){
+        //     const li = document.createElement("li");
+        //     li.innerText = i+1;
+        //     temp.appendChild(li);
+        // }
+        // ul.appendChild(temp);
+        // console.timeEnd()
+
+        console.time()
+        let ul = document.querySelector("ul");
+        const temp = document.createDocumentFragment();
+        for(let i=0;i<10000;i++){
+            const li = document.createElement("li");
+            li.innerText = i+1;
+            temp.appendChild(li);
+        }
+        ul.appendChild(temp);
+        console.timeEnd()
+    </script>
+</body>
+</html>

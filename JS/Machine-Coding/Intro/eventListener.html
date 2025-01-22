@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <!-- <button onclick="handleSubmit()">Submit</button> -->
+    <button>Submit</button>
+    <script>
+        //we canot add multiple functions 
+        // function handleSubmit(){
+        //     console.log("i was called");
+        // }
+
+        let btn = document.querySelector("button");
+        // btn.onclick = function handleSubmit(){
+        //     console.log("i was called");
+        // }
+
+        // btn.onclick = function handleSubmit(){
+        //     console.log("i am fake");
+        // }
+
+        //addEventListener
+//using once:true executes the cb func exactly once 
+        btn.addEventListener("click", function(){
+            console.log("i was called");
+        }, {once:true})
+
+        btn.addEventListener("click", function(){
+            console.log("i was called again");
+        })
+
+
+
+        
+    </script>
+</body>
+</html>
