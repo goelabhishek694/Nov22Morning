@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outerbox{
+            height: 10rem;
+            width: 10rem;
+            background-color: lightblue;
+        }
+
+        .innerbox{
+            height: 50%;
+            width: 50%;
+            background-color: rgb(210, 14, 191);
+        }
+        #button{
+            margin-top: 3px;
+            background-color: salmon;
+            width: 50%;
+            margin-left: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Event Bubbling</h3>
+    <div class="outerbox">
+        <div class="innerbox">
+            <div id="button">
+                Send
+            </div>
+        </div>
+    </div>
+    <script>
+        const outerBox = document.querySelector(".outerbox");
+        const innerBox = document.querySelector(".innerbox");
+        const btn = document.querySelector("#button");
+
+        btn.addEventListener("click",function(){
+            console.log("btn was clicked");
+        })
+
+        innerBox.addEventListener("click",function(){
+            console.log("innerBox was clicked");
+        })
+
+        outerBox.addEventListener("click",function(){
+            console.log("outerBox was clicked");
+        })
+
+        document.addEventListener("click",function(){
+            console.log("document was clicked");
+        })
+    </script>
+</body>
+</html>
