@@ -24,11 +24,43 @@
 
 <body>
     <div class = "container">
-        <div class = "red">red</div>
+        <div class = "red abc">red</div>
         <div class = "blue">blue</div>
         <div class = "green">green</div>
     </div>
-    
+    <script>
+        let container = document.querySelector(".container");
+        
+        //noob way to handle events 
+        // let redDiv = document.querySelector(".red");
+        // let blueDiv = document.querySelector(".blue");
+        // let greenDiv = document.querySelector(".green");
+
+        // redDiv.addEventListener("click",function(){
+        //     container.style.backgroundColor = "red";
+        // })
+
+        // blueDiv.addEventListener("click",function(){
+        //     container.style.backgroundColor = "blue";
+        // })
+
+        // greenDiv.addEventListener("click",function(){
+        //     container.style.backgroundColor = "green";
+        // })
+
+        //pro way - use eventBubling
+        container.addEventListener("click", function(e){
+            // console.log("target ", e.target);
+            // console.log("CurrentTarget ", e.currentTarget);
+
+            let eleClick = e.target;
+            // let color = eleClick.classList[0];
+            let color = eleClick.getAttribute("class").split(" ")[0];
+            // console.log(color);
+            container.style.backgroundColor = color
+        })
+
+    </script>
 </body>
 
 </html>
