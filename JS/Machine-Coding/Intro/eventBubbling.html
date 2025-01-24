@@ -40,8 +40,8 @@
 
         btn.addEventListener("click",function(e){
             console.log("btn was clicked");
-            console.log("target ", e.target);
-            console.log("CurrentTarget ", e.currentTarget);
+            // console.log("target ", e.target);
+            // console.log("CurrentTarget ", e.currentTarget);
             
         })
 
@@ -49,8 +49,8 @@
             console.log("innerBox was clicked");
             // eventObj.stopPropagation(); // stops propogation of event for all the ancestor elements
             // eventObj.stopImmediatePropagation();// stops propogation of event for all the ancestor elements and current ele
-            console.log("target ", e.target); // the node on which event originally occured
-            console.log("CurrentTarget ", e.currentTarget); // the node on which currently event ocurred
+            // console.log("target ", e.target); // the node on which event originally occured
+            // console.log("CurrentTarget ", e.currentTarget); // the node on which currently event ocurred
 
         })
 
@@ -60,15 +60,15 @@
 
         outerBox.addEventListener("click",function(e){
             console.log("outerBox was clicked");
-            console.log("target ", e.target);
-            console.log("CurrentTarget ", e.currentTarget);
+            // console.log("target ", e.target);
+            // console.log("CurrentTarget ", e.currentTarget);
         })
 
         document.addEventListener("click",function(e){
             console.log("document was clicked");
-            console.log("target ", e.target);
-            console.log("CurrentTarget ", e.currentTarget);
-        })
+            // console.log("target ", e.target);
+            // console.log("CurrentTarget ", e.currentTarget);
+        }, true)
     </script>
 </body>
 </html>
