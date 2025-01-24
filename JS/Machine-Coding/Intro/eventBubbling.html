@@ -38,20 +38,36 @@
         const innerBox = document.querySelector(".innerbox");
         const btn = document.querySelector("#button");
 
-        btn.addEventListener("click",function(){
+        btn.addEventListener("click",function(e){
             console.log("btn was clicked");
+            console.log("target ", e.target);
+            console.log("CurrentTarget ", e.currentTarget);
+            
         })
 
-        innerBox.addEventListener("click",function(){
+        innerBox.addEventListener("click",function(e){
             console.log("innerBox was clicked");
+            // eventObj.stopPropagation(); // stops propogation of event for all the ancestor elements
+            // eventObj.stopImmediatePropagation();// stops propogation of event for all the ancestor elements and current ele
+            console.log("target ", e.target); // the node on which event originally occured
+            console.log("CurrentTarget ", e.currentTarget); // the node on which currently event ocurred
+
         })
 
-        outerBox.addEventListener("click",function(){
+        // innerBox.addEventListener("click",function(eventObj){
+        //     console.log("innerBox was clicked handler 2");
+        // })
+
+        outerBox.addEventListener("click",function(e){
             console.log("outerBox was clicked");
+            console.log("target ", e.target);
+            console.log("CurrentTarget ", e.currentTarget);
         })
 
-        document.addEventListener("click",function(){
+        document.addEventListener("click",function(e){
             console.log("document was clicked");
+            console.log("target ", e.target);
+            console.log("CurrentTarget ", e.currentTarget);
         })
     </script>
 </body>
