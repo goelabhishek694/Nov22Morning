@@ -2,36 +2,65 @@
 You're creating an online shopping website with a list of products.
 Implement the Add to Cart button by only adding a single event listener to achieve it -->
 
-
 <!DOCTYPE html>
-<html lang = "en">
-
-<head>
-    <meta charset = "UTF - 8">
-    <meta http-equiv = "X - UA - Compatible" content = "IE = edge">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF - 8" />
+    <meta http-equiv="X - UA - Compatible" content="IE = edge" />
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <div id = "productList">
-        <div class = "product">
-            <h3>Product 1</h3>
-            <p>Price: $10</p>
-            <button class = "add-to-cart">Add to Cart</button>
-        </div>
-        <div class = "product">
-            <h3>Product 2</h3>
-            <p>Price: $20</p>
-            <button class = "add-to-cart">Add to Cart</button>
-        </div>
-        <div class = "product">
-            <h3>Product 3</h3>
-            <p>Price: $30</p>
-            <button class = "add-to-cart">Add to Cart</button>
-        </div>
+  <body>
+    <div id="productList">
+      <h1>Products</h1>
+      <div class="product">
+        <h3>Product 1</h3>
+        <p>Price: $10</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product">
+        <h3>Product 2</h3>
+        <p>Price: $20</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product">
+        <h3>Product 3</h3>
+        <p>Price: $30</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
     </div>
-    
-</body>
+    <script>
+      // console.log("you have added this product of price this to your cart")
+      const productList = document.querySelector("#productList");
+      productList.addEventListener("click", function (e) {
+        let atcButton = e.target;
+        // console.log(atcButton);
+        if (atcButton.getAttribute("class") == "add-to-cart") {
+          //2 ways to get sibling
+          // 1. you use Sibling method
+          // let priceOfTheProduct =
+          //   atcButton.previousElementSibling.innerText.split(" ")[1];
+          // let nameOfTheProduct =
+          //   atcButton.previousElementSibling.previousElementSibling.innerText;
+          // console.log(priceOfTheProduct);
+          // console.log(nameOfTheProduct);
+          // 2. go to parent node , then .children to get access to all the children
+          let productInfo = atcButton.parentNode;
+          let allChildren = productInfo.children;
 
+          let nameOfTheProduct = allChildren[0];
+          let priceOfTheProduct = allChildren[1];
+          priceOfTheProduct = priceOfTheProduct.innerText.split(" ")[1];
+          nameOfTheProduct = nameOfTheProduct.innerText;
+          // console.log(priceOfTheProduct);
+          // console.log(nameOfTheProduct);
+
+          console.log(
+            `added ${nameOfTheProduct} of price ${priceOfTheProduct} to your cart`
+          );
+        }
+      });
+    </script>
+  </body>
 </html>
