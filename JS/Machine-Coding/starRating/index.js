@@ -1,7 +1,7 @@
 const starContainer = document.querySelector(".star_container");
-
+let starNumber;
 starContainer.addEventListener("click", function(e){
-    let starNumber = e.target.getAttribute("idx");
+    starNumber = e.target.getAttribute("idx");
     let currentClass = e.target.classList[0];
     if(currentClass == "star"){
         console.log(starNumber);
@@ -21,14 +21,11 @@ starContainer.addEventListener("mouseover", function(e){
 })
 
 starContainer.addEventListener("mouseout", function(e){
-    console.log("hi", e.target);
-    
-    let starNumber = e.target.getAttribute("idx");
     let currentClass = e.target.classList[0];
     if(currentClass == "star"){
         console.log("mouseleave");
-        // console.log(starNumber);
         fillStars(0)
+        fillStars(starNumber)
     }
 })
 
