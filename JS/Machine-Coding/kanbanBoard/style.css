@@ -1,0 +1,164 @@
+:root {
+    --pink: lightpink;
+    --blue: lightblue;
+    --green: lightgreen;
+    --purple: #8e44ad;
+    ;
+    --light: white;
+}
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.pink{
+    background-color: var(--pink)
+}
+
+.blue{
+    background-color: var(--blue)
+}
+
+.purple{
+    background-color: var(--purple)
+}
+
+.green{
+    background-color: var(--green)
+}
+
+.toolbox_cont{
+    height: 5rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.toolbox_priority_cont, .action_btn_cont{
+    height: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.toolbox_priority_cont{
+    margin-left: 3rem;
+    background-color: gray;
+    width: 18rem;
+}
+
+.color{
+    height: 1.5rem;
+    width: 3.5rem;
+}
+
+.action_btn_cont{
+    background-color: white;
+    width: 9rem;
+}
+
+.add_btn, .remove_btn{
+    font-size: 1.75rem;
+}
+
+.main_cont{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.ticket_cont{
+    height: 10rem;
+    width: 15rem;
+    position: relative;
+    background-color: #ecf0f1;
+}
+
+.ticket_color{
+    height: 10%;
+}
+
+.ticket_id{
+    height: 0.75rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding-left: 10px;
+}
+
+.ticket_area{
+    height: 7.5rem;
+    padding: 5px;
+    font-size: 1.25rem;
+}
+
+.lock_unlock{
+    font-size: 1.25rem;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+}
+
+.modal_cont{
+    position: fixed;
+    height: 50vh;
+    width: 50vw;
+    left: 25vw;
+    top: 25vh;
+    display: none;
+    /* border: 2px solid green; */
+    /* display: flex; */
+
+    -webkit-box-shadow: 10px 10px 40px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 40px -4px rgba(0, 0, 0, 0.75);
+        box-shadow: 10px 10px 40px -4px rgba(0, 0, 0, 0.75);
+
+}
+
+.textarea_cont{
+    height: 100%;
+    width: 75%;
+    font-size: 2rem;
+    padding: 2rem;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.priority_color_cont{
+    height: 100%;
+    width: 25%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.priority_color{
+    height: 3rem;
+    width: 5rem;
+}
+
+.active{
+    border: 5px solid white;
+}
