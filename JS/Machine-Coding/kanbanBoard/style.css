@@ -5,6 +5,7 @@
     --purple: #8e44ad;
     ;
     --light: white;
+    --red: rgb(245, 9, 9);
 }
 html {
     box-sizing: border-box;
@@ -43,6 +44,10 @@ li {
 
 .green{
     background-color: var(--green)
+}
+
+.red{
+    color: var(--red);
 }
 
 .toolbox_cont{
