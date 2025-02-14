@@ -98,9 +98,9 @@ function createTicket(priorityColor, uid, content){
     const ticketArea = ticketContainer.querySelector(".ticket_area");
     const lockBtn = ticketContainer.querySelector(".lock_unlock");
     const priorityColorEle = ticketContainer.querySelector(".ticket_color");
-    addLockUnlock(ticketArea, lockBtn);
-    addPriorityChangeListeners(priorityColorEle, priorityColor)
-    deleteListeners(ticketContainer);
+    addLockUnlock(ticketArea, lockBtn, uid);
+    addPriorityChangeListeners(priorityColorEle, uid)
+    deleteListeners(ticketContainer, uid);
 
     if(isFromLS) return;
     let ticketObj = {
@@ -112,23 +112,27 @@ function createTicket(priorityColor, uid, content){
     updateLocalStorage();
 }
 
-function addLockUnlock(ticketArea, lockBtn){
+function addLockUnlock(ticketArea, lockBtn, uid){
     let isLocked = true;
     lockBtn.addEventListener("click", function(){
         if(isLocked){
             lockBtn.children[0].classList.remove("fa-lock");
             lockBtn.children[0].classList.add("fa-unlock");
             ticketArea.setAttribute("contenteditable", true);
+            let ticketObj = allTickets.find(ticket=>ticket.id == uid);
+            ticketObj.content = ticketArea.textContent;
+            updateLocalStorage();
         }else{
             lockBtn.children[0].classList.add("fa-lock");
             lockBtn.children[0].classList.remove("fa-unlock");
             ticketArea.setAttribute("contenteditable", false);
         }
         isLocked = !isLocked;
+        
     })
 }
 
-function addPriorityChangeListeners(priorityColorEle){
+function addPriorityChangeListeners(priorityColorEle, uid){
     priorityColorEle.addEventListener("click", function(){
         let currPriorityColor = priorityColorEle.classList[1];
         let idx = priorityColors.indexOf(currPriorityColor);
@@ -136,13 +140,19 @@ function addPriorityChangeListeners(priorityColorEle){
         console.log(nextPriorityColor);
         priorityColorEle.classList.remove(currPriorityColor);
         priorityColorEle.classList.add(nextPriorityColor);
+        let ticketObj = allTickets.find(ticket=>ticket.id == uid);
+        ticketObj.color = nextPriorityColor;
+        updateLocalStorage();
     })
 }
 
-function deleteListeners(ticketContainer){
+function deleteListeners(ticketContainer, uid){
     ticketContainer.addEventListener("click", function(){
-        if(deleteBtn.classList[1]){ //delete  my ticket
+        if(deleteBtn.classList[1]){ //delete  my ticket beacsue red color is present
             ticketContainer.remove();
+            const restOfTickets = allTickets.filter(ticket=>ticket.id != uid);
+            allTickets =  restOfTickets
+            updateLocalStorage();
         }
     })
 }
