@@ -19,12 +19,13 @@
         // 2. properties of the ele - null if nothing 
         // 3. the children of this element / or text content  
         const headingEle = React.createElement("h1", { style: {color: "red", backgroundColor: "pink"}}, "Hello from React");
+        const divEle = React.createElement("div", { style: {color: "red", backgroundColor: "pink"}}, headingEle, headingEle, paraEle);
 
         //Render the element to the DOM using ReactDOM
         //ReactDOM.render tkes two arguments
         // 1. the react ele to render
         // 2. the dom ele where the react ele should be mounted
-        ReactDOM.render(headingEle, rootEle);
+        ReactDOM.render(divEle, rootEle);
 
 
     </script>
