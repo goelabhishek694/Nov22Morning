@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        //get the root ele where the react app will be mounted
+        const rootEle = document.getElementById("root");
+
+        //create an ele using React.createElement
+        // React.createElement takes at least three arguments:
+        // 1. The tag name of the HTML ele to create
+        // 2. properties of the ele - null if nothing 
+        // 3. the children of this element / or text content  
+        const headingEle = React.createElement("h1", { style: {color: "red", backgroundColor: "pink"}}, "Hello from React");
+
+        //Render the element to the DOM using ReactDOM
+        //ReactDOM.render tkes two arguments
+        // 1. the react ele to render
+        // 2. the dom ele where the react ele should be mounted
+        ReactDOM.render(headingEle, rootEle);
+
+
+    </script>
+</body>
+</html>
