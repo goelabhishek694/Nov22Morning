@@ -8,6 +8,8 @@ import ConditionalRendering from './components/ConditionalRendering'
 import EventHandler from './components/EventHandler'
 import Counter from './components/Counter'
 import Form from './components/Form'
+import AdvancedForm from './components/AdvancedForm'
+import FormikForms from './components/FormikForms'
 
 function App() {
   const fruits = ["Apple", "Banana","Cherry"];
@@ -29,7 +31,9 @@ function App() {
       {/* <ConditionalRendering isLoggedIn={isLoggedIn} username={userName}/> */}
       {/* <EventHandler/> */}
       {/* <Counter/> */}
-      <Form/>
+      {/* <Form/> */}
+      {/* <AdvancedForm></AdvancedForm> */}
+      <FormikForms/>
     </>
   )
 }

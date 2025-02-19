@@ -4,15 +4,28 @@ function Form() {
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
 
-    const handleName = () => {
-
+    const handleName = (e) => {
+        setName(e.target.value)
     }
 
-    const handleEmail = () => {
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
+    }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        //make an api call to check the crednetials 
+        console.log(name);
+        console.log(email);
+
+        //reset the values
+        setName("");
+        setEmail("")
+        
     }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
         <div>
             <label htmlFor='name'>Name:</label>
             <input
@@ -32,6 +45,7 @@ function Form() {
                 onChange={handleEmail}
             />
         </div>
+        <button type="submit">Submit</button>
     </form>
   )
 }
