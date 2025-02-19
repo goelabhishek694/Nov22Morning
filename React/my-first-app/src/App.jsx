@@ -10,6 +10,8 @@ import Counter from './components/Counter'
 import Form from './components/Form'
 import AdvancedForm from './components/AdvancedForm'
 import FormikForms from './components/FormikForms'
+import TemperatureInput from './components/TemperatureInput'
+import TemperatureDisplay from './components/TemperatureDisplay'
 
 function App() {
   const fruits = ["Apple", "Banana","Cherry"];
@@ -19,6 +21,12 @@ function App() {
   }
   const isLoggedIn = false;
   const userName = "Vanitha"
+
+  const [temperature, setTemperature] = useState(""); 
+
+  const handleTemperatureChange = (newTemp) => {
+    setTemperature(newTemp)
+  }
 
   return (
     <>
@@ -33,7 +41,9 @@ function App() {
       {/* <Counter/> */}
       {/* <Form/> */}
       {/* <AdvancedForm></AdvancedForm> */}
-      <FormikForms/>
+      {/* <FormikForms/> */}
+      <TemperatureInput temperature={temperature} handleTemperatureChange={handleTemperatureChange} />
+      <TemperatureDisplay temperature={temperature}/>
     </>
   )
 }
