@@ -6,6 +6,8 @@ import MyComponent from './components/MyComponent'
 import DisplayData from './components/DisplayData'
 import ConditionalRendering from './components/ConditionalRendering'
 import EventHandler from './components/EventHandler'
+import Counter from './components/Counter'
+import Form from './components/Form'
 
 function App() {
   const fruits = ["Apple", "Banana","Cherry"];
@@ -25,7 +27,9 @@ function App() {
       <MyComponent name="Rishabh"/> */}
       {/* <DisplayData fruits={fruits} buyer={person}/> */}
       {/* <ConditionalRendering isLoggedIn={isLoggedIn} username={userName}/> */}
-      <EventHandler/>
+      {/* <EventHandler/> */}
+      {/* <Counter/> */}
+      <Form/>
     </>
   )
 }
