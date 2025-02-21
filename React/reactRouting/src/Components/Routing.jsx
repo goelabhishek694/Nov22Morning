@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Link, Outlet, useParams, Navigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  useParams,
+  Navigate,
+} from "react-router-dom";
 
 function Routing() {
   return (
@@ -34,8 +41,8 @@ function Routing() {
             <Route path="founder" element={<Founder />} />
           </Route>
           <Route path="/contact" element={<Contact />} />
-          <Route path="/user/:id" element={<Users isAdmin={true}/>}/>
-          <Route path="/home" element={<Navigate to={"/"}/>}/>
+          <Route path="/user/:id" element={<Users isAdmin={true} />} />
+          <Route path="/home" element={<Navigate to={"/"} />} />
 
           {/* matches with everything */}
           <Route path="*" element={<PageNotFound />} />
@@ -70,7 +77,6 @@ function Company() {
   return (
     <>
       <h2>Company good, never fire employees</h2>;
-      <Outlet />
     </>
   );
 }
@@ -79,40 +85,39 @@ function Founder() {
   return (
     <>
       <h2>Founder good, always gives appraisals</h2>
-      <Outlet />
     </>
   );
 }
 
-function Users({isAdmin}){
-    let params = useParams();
-    console.log(params);
-    const [user,setUser] = useState(null);
+function Users({ isAdmin }) {
+  let params = useParams();
+  console.log(params);
+  const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        async function fetchUser(){
-            const resp = await fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`);
-            const results = await resp.json();
-            setUser(results);
-        }
-        fetchUser();
-    },[])
+  useEffect(() => {
+    async function fetchUser() {
+      const resp = await fetch(
+        `https://jsonplaceholder.typicode.com/users/${params.id}`
+      );
+      const results = await resp.json();
+      setUser(results);
+    }
+    fetchUser();
+  }, []);
 
-    return (
+  return (
+    <>
+      {user == null ? (
+        <h3>Loading...</h3>
+      ) : (
         <>
-        {
-            user == null ? (<h3>Loading...</h3>) : 
-            (
-                <>
-                    <h4>User Name: {user.username}</h4>
-                    <h3> Address: {user.address.street + " " + user.address.city}</h3>
-                    <h4> Phone: {user.phone}</h4>
-                </>
-            )
-        }
+          <h4>User Name: {user.username}</h4>
+          <h3> Address: {user.address.street + " " + user.address.city}</h3>
+          <h4> Phone: {user.phone}</h4>
         </>
-    )
-    
+      )}
+    </>
+  );
 }
 
 export default Routing;
