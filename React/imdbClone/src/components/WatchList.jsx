@@ -48,6 +48,14 @@ function WatchList() {
     
     setCurrGenre(genre);
   }
+
+  const removeFromWatchlist = (movie) => {
+    let restOfTheMovies = watchlist.filter(movieObj => {
+      return movieObj.id != movie.id
+    })
+    setWatchlist(restOfTheMovies);
+    localStorage.setItem("watchlist", JSON.stringify(restOfTheMovies));
+  }
   return (
     <>
       <div className="flex justify-center mx-4 gap-8 my-4">
@@ -100,6 +108,11 @@ function WatchList() {
                   <div>Genre</div>
                 </div>
               </th>
+              <th>
+                <div className="flex">
+                  <div>Delete</div>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
@@ -114,7 +127,7 @@ function WatchList() {
             .filter(movieObj => movieObj.title.toLowerCase().includes(search.toLowerCase()))
             .map(
               (
-                { title, popularity, vote_average, genre_ids, backdrop_path },
+                movieObj,
                 idx
               ) => {
                 return (
@@ -122,16 +135,17 @@ function WatchList() {
                     <td className="flex items-center px-6 py-4 font-normal text-gray-900">
                       <img
                         className="h-[6rem] w-[10rem] object-fit"
-                        src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+                        src={`https://image.tmdb.org/t/p/original/${movieObj.backdrop_path}`}
                         alt=""
                       />
                       <div className="font-medium text-gray-700 text-sm">
-                        {title}
+                        {movieObj.title}
                       </div>
                     </td>
-                    <td className="pl-6 py-4">{vote_average}</td>
-                    <td className="pl-6 py-4">{popularity}</td>
-                    <td className="pl-2 py-4">{genre[genre_ids[0]]}</td>
+                    <td className="pl-6 py-4">{movieObj.vote_average}</td>
+                    <td className="pl-6 py-4">{movieObj.popularity}</td>
+                    <td className="pl-2 py-4">{genre[movieObj.genre_ids[0]]}</td>
+                    <td className="pl-2 py-4 text-red-600" onClick={() => removeFromWatchlist(movieObj)}><i class="fa-solid fa-trash"></i></td>
                   </tr>
                 );
               }
