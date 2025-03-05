@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { MovieContext } from "../context/MovieContext";
 import genre from "../utility";
 function WatchList() {
-  const [watchlist, setWatchlist] = useState([]);
+  const {watchlist, setWatchlist, removeFromWatchlist} = useContext(MovieContext);
   const [search, setSearch] = useState("");
   const [genreList, setGenreList] =  useState([]);
   const [currGenre, setCurrGenre] =  useState("All Genres");
+
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("watchlist")) || [];
@@ -49,13 +51,6 @@ function WatchList() {
     setCurrGenre(genre);
   }
 
-  const removeFromWatchlist = (movie) => {
-    let restOfTheMovies = watchlist.filter(movieObj => {
-      return movieObj.id != movie.id
-    })
-    setWatchlist(restOfTheMovies);
-    localStorage.setItem("watchlist", JSON.stringify(restOfTheMovies));
-  }
   return (
     <>
       <div className="flex justify-center mx-4 gap-8 my-4">
