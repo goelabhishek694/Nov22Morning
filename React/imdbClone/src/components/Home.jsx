@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Banner from './Banner'
 import Movies from './Movies'
-
+import { useSelector, useDispatch } from 'react-redux'
+import PaginationSlice from '../redux/paginationSlice'
+const actions = PaginationSlice.actions;
 function Home() {
-    const [pageNo,setPageNo] = useState(1);
+  const dispatch = useDispatch();
+    const {pageNo} = useSelector(state => state.paginationState)
     const handlePrev = () => {
-        if(pageNo==1) return;
-        setPageNo(pageNo-1)
+      dispatch(actions.handlePrevious());
     }
     const handleNext = () => {
-        setPageNo(pageNo+1)
+      dispatch(actions.handleNext());
     }
   return (
     <div>
