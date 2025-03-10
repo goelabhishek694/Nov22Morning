@@ -32,3 +32,17 @@ function Home() {
 }
 
 export default Home
+
+// while writing unit test cases -> we are going to take a dummy value of sanitiseData() . 
+// function foo(){
+//   let data =[];
+//   let resp = await fetch{url);
+//   resp.json();
+//   let ans = sanitiseData(); 
+//   //more processing
+
+// }
+
+// function sanitiseData(){
+
+// }

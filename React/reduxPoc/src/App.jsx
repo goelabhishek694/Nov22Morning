@@ -9,8 +9,8 @@ function App() {
 
   return (
       // <CounterRedux/>
-      // <TodoRedux/>
-      <UserRedux/>
+      <TodoRedux/>
+      // <UserRedux/>
   )
 }
 
