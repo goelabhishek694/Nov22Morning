@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Counter from "../Counter";
 
 describe("counter test cases", () => {
-    beforeAll
 
   test("initial state check", () => {
     //rendering it in isolation
@@ -44,5 +43,10 @@ describe("counter test cases", () => {
     //verify
     const isTwoPresent = screen.getByText("Count is -2");
     expect(isTwoPresent).toBeInTheDocument();
+  });
+
+  test("snapshot for counter2", () => {
+    const { asFragment } = render(<Counter />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });
