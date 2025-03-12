@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import LargeArraySum from "./component/UseMemo";
 import ParentComponent from "./component/Memo";
+import ItemList from "./component/UseCallback";
 // import Home from "./component/Home";
 // import About from "./component/About";
 // import Contact from "./component/Contact";
@@ -74,7 +75,8 @@ function App() {
     // </Router>
 
     // <LargeArraySum/>
-    <ParentComponent/>
+    // <ParentComponent/>
+    <ItemList/>
   );
 }
 
