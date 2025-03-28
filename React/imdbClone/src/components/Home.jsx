@@ -18,7 +18,7 @@ function Home() {
       <Banner/>
       <Movies pageNo={pageNo}/>
       {/* pagination */}
-      <div className="bg-gray-400 w-full mt-8 p-4 h-[50px] flex justify-center gap-8">
+      {/* <div className="bg-gray-400 w-full mt-8 p-4 h-[50px] flex justify-center gap-8">
         <div onClick={handlePrev} >
         <i class="fa-solid fa-arrow-left"></i>
         </div>
@@ -26,7 +26,7 @@ function Home() {
         <div onClick={handleNext}>
         <i class="fa-solid fa-arrow-right"></i>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

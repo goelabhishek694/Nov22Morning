@@ -8,6 +8,20 @@ const toolBoxPriorityColorCont = document.querySelector(".toolbox_priority_cont"
 const deleteBtn = document.querySelector(".remove_btn");
 let allTickets = localStorage.getItem("tickets") || [] ;
 let isFromLS = false;
+
+mainCont.innerHTML = `
+<div class="column pending-column" data-status="pending">
+            <h2>Pending</h2>
+            <div class="tickets-container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="column completed-column" data-status="completed">
+            <h2>Completed</h2>
+            <div class="tickets-container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+`
+
+
+
 if(typeof allTickets == "string" ) {
     allTickets =  JSON.parse(allTickets);
     populateUI(); //display all the tickets
@@ -18,7 +32,7 @@ function populateUI(){
     //dsiplay ticket on ui
     for(let i=0;i<allTickets.length;i++){
         let {id,color,content} = allTickets[i];
-        createTicket(color, id, content);
+        createTicket(color, id, content, status || 'pending');
     }
     isFromLS = false;
 }
@@ -76,7 +90,7 @@ modalCont.addEventListener("keypress",function(e){
     const priorityColor = priorityColorEle.classList[1];
     modalCont.style.display = "none";
     var uid = new ShortUniqueId().rnd();
-    createTicket(priorityColor, uid, content)  
+    createTicket(priorityColor, uid, content, "pending")  
     
     //reset modal
     modalTextArea.value =""  
@@ -84,9 +98,11 @@ modalCont.addEventListener("keypress",function(e){
     modalPriorityColorCont.getElementsByClassName("blue")[0].classList.add("active");
 })
 
-function createTicket(priorityColor, uid, content){
+function createTicket(priorityColor, uid, content, status="pending"){
     const ticketContainer = document.createElement("div");
     ticketContainer.setAttribute("class", "ticket_cont");
+    ticketContainer.setAttribute("draggable", "true");
+    ticketContainer.setAttribute("data-id", uid);
     ticketContainer.innerHTML = `<div class="ticket_color ${priorityColor}"></div>
             <div class="ticket_id">#${uid}</div>
             <div class="ticket_area">${content}</div>
@@ -94,19 +110,23 @@ function createTicket(priorityColor, uid, content){
                 <i class="fa-solid fa-lock"></i>
             </div>`
     
-    mainCont.appendChild(ticketContainer);
+    // Add to appropriate column
+    const column = document.querySelector(`.${status}-column .tickets-container`);
+    column.appendChild(ticketContainer);
+    
     const ticketArea = ticketContainer.querySelector(".ticket_area");
     const lockBtn = ticketContainer.querySelector(".lock_unlock");
     const priorityColorEle = ticketContainer.querySelector(".ticket_color");
     addLockUnlock(ticketArea, lockBtn, uid);
     addPriorityChangeListeners(priorityColorEle, uid)
     deleteListeners(ticketContainer, uid);
-
+    addDragListeners(ticketContainer);
     if(isFromLS) return;
     let ticketObj = {
         id: uid,
         color: priorityColor,
         content: content,
+        status: status
     }
     allTickets.push(ticketObj);
     updateLocalStorage();
@@ -155,6 +175,39 @@ function deleteListeners(ticketContainer, uid){
             updateLocalStorage();
         }
     })
+}
+
+function addDragListeners(ticketContainer, uid){
+    ticketContainer.addEventListener('dragstart', (e) =>{
+        e.dataTransfer.setData("text/plain", ticketContainer.dataset.id);
+        ticketContainer.classList.add("dragging");
+    })
+
+    ticketContainer.addEventListener('dragend', (e) =>{
+        ticketContainer.classList.remove("dragging");
+    })
+}
+
+function allowDrop(e) {
+    e.preventDefault();
+}
+
+function drop(e){
+    e.preventDefault();
+    const ticketId = e.dataTransfer.getData("text/plain");
+    const ticket = document.querySelector(`[data-id="${ticketId}"]`);
+    const targetColumn = e.target.closest(".tickets-container");
+
+    if(targetColumn && ticket){
+        targetColumn.appendChild(ticket);
+        //update status in alltickets array 
+        const status = targetColumn.closest(".column").dataset.status;
+        const ticketObj = allTickets.find(t => t.id == ticketId);
+        if(ticketObj){
+            ticketObj.status=status;
+            updateLocalStorage();
+        }
+    }
 }
 
 function updateLocalStorage(){

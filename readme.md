@@ -20,3 +20,6 @@ https://medium.com/@ks.deepak07/es6-classes-in-javascript-e94a5db9fdb2
 
 31/1/25
 https://javascript.info/garbage-collection
+
+https://www.freecodecamp.org/news/how-indexeddb-works-for-beginners/
+https://medium.com/@kamresh485/a-comprehensive-guide-to-indexeddb-indexes-enhancing-data-retrieval-in-web-applications-8755957c0cbe
