@@ -1,6 +1,7 @@
 const express = require("express");
 const connectToDB = require("./config/db");
 const productRouter = require("./routes/product");
+const userRouter = require("./routes/user");
 
 const app = express();
 connectToDB();
@@ -9,6 +10,7 @@ connectToDB();
 app.use(express.json());
 
 app.use("/api/products", productRouter);
+app.use("/api/users", userRouter);
 
 //default route
 app.get("/", (req, res) => {
