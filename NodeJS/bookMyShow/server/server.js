@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 
-app.listen(8081, ()=>{
+app.listen(8082, ()=>{
     console.log("Server is running");
 })
 connectToDB();

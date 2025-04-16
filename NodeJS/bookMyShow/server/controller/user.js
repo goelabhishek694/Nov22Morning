@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 
 exports.registerUser = async(req, res) => {
     try{
@@ -52,9 +53,14 @@ exports.loginUser = async(req, res) => {
             })
         }
 
+        const token = jwt.sign({userId: user["_id"], name: user.name}, process.env.jwt_secret, {expiresIn: "1d"});
+        console.log("jwt token lgin route ",token);
+        
+
         res.json({
             message: "User logged in",
-            success: true
+            success: true,
+            data: token
         })
 
     }catch(err){

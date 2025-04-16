@@ -10,6 +10,7 @@ function Login() {
       console.log(response);
       if(response.success){
         message.success(response.message);
+        localStorage.setItem("token", response.data)
         navigate("/")
       }else{
         message.error(response.message)
