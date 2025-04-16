@@ -1,10 +1,23 @@
 import React from "react";
-import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
+import { Button, Form, Input, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { LoginUser } from "../../calls/users";
 function Login() {
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
+    try{
+      const response = await LoginUser(values);
+      console.log(response);
+      if(response.success){
+        message.success(response.message);
+        navigate("/")
+      }else{
+        message.error(response.message)
+      }
+    }catch(err){
+      message.error(err.message)
+    }
+  };
   return (
     <>
       <header className="App-header">

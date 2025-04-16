@@ -1,13 +1,20 @@
 import React from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import { Link } from "react-router-dom";
 import { RegisterUser } from "../../calls/users";
 function Register() {
   const onFinish = async (values) => {
     try{
       const response = await RegisterUser(values);
+      console.log(response);
+      if(response.success){
+        message.success(response.message)
+        
+      }else{
+        message.error(response.message)
+      }
     }catch(err){
-
+      message.error(err.message)
     }
   };
   return (
