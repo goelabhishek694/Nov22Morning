@@ -6,9 +6,9 @@ const userRouter = require("./routes/userRoutes");
 const app = express();
 app.use(express.json());
 
-app.use("/api/user", userRouter);
+app.use("/api/users", userRouter);
 
-app.listen(8082, ()=>{
+app.listen(8081, ()=>{
     console.log("Server is running");
 })
 connectToDB();

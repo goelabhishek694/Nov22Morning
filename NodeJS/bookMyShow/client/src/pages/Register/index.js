@@ -1,10 +1,15 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
 import { Link } from "react-router-dom";
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
+import { RegisterUser } from "../../calls/users";
 function Register() {
+  const onFinish = async (values) => {
+    try{
+      const response = await RegisterUser(values);
+    }catch(err){
+
+    }
+  };
   return (
     <>
       <header className="App-header">
@@ -71,7 +76,7 @@ function Register() {
                 block
                 htmlType="submit"
                 style={{fontSize: "1rem", fontWeight:"600"}}>
-                  Login
+                  Register
                 </Button>
               </Form.Item>
             </Form>
