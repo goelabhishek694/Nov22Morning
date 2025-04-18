@@ -3,17 +3,15 @@ import {createSlice} from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        data: {}
+        user: null
     },
     reducers: {
-        showLoading: (state) => {
-            state.loading=true;
-        },
-        hideLoading: (state) => {
-            state.loading=false;
+        setUser : (state, action) => {
+            console.log(action);
+            state.user = action.payload;
         }
     }
 })
 
-export const {showLoading, hideLoading} = userSlice.actions;
+export const {setUser} = userSlice.actions;
 export default userSlice.reducer;

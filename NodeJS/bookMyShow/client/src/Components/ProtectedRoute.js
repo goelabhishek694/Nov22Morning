@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { setUser } from "../redux/userSlice";
 
 function ProtectedRoute({ children }) {
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((store) => store.users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -81,7 +81,8 @@ function ProtectedRoute({ children }) {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      getValidUser();
+        console.log("token present in LS");
+        getValidUser();
     } else {
       navigate("/login");
     }
