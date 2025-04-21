@@ -16,3 +16,53 @@ exports.addMovie = async (req, res) => {
         })
     }
 }
+
+exports.getAllMovies = async (req, res) => {
+    try{
+        const allMovies = await Movie.find();
+        res.send({
+            success: true,
+            message: "all movies have been retrieved",
+            data: allMovies
+        })
+    }catch(err){
+        res.send({
+            success: false,
+            message: err.message
+        })
+    }
+}
+
+exports.updateMovie = async (req, res) => {
+    try{
+        const {id:movieId} = req.params;
+        const update = req.body;
+        const updatedMovie = await Movie.findByIdAndUpdate(movieId, update, {"returnDocument": "after"});
+        res.send({
+            success: true,
+            message: "movie updated successfully",
+            data: allMovies
+        })
+    }catch(err){
+        res.send({
+            success: false,
+            message: err.message
+        })
+    }
+}
+
+exports.deleteMovie = async (req, res) => {
+    try{
+        const {id:movieId} = req.params;
+        await Movie.findByIdAndDelete(movieId);
+        res.send({
+            success: true,
+            message: "movie deleted successfully",
+        })
+    }catch(err){
+        res.send({
+            success: false,
+            message: err.message
+        })
+    }
+}
