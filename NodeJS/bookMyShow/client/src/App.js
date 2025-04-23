@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ProtectedRoute from './Components/ProtectedRoute';
 import Admin from './pages/Admin';
+import Partner from './pages/Partner';
 
 function App() {
   return (
@@ -14,7 +15,12 @@ function App() {
         <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
-        <Route path='/admin' element={<Admin/>}></Route>
+        <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}></Route>
+        {/* <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}></Route> */}
+        <Route path='/partner' element={<ProtectedRoute><Partner/></ProtectedRoute>}></Route>
+        {/* <Route path='/movie/:id' element={<ProtectedRoute><SingleMovie/></ProtectedRoute>}></Route> */}
+        {/* <Route path='/book-show/:id' element={<ProtectedRoute><BookShow/></ProtectedRoute>}></Route> */}
+
       </Routes>
     </BrowserRouter>
   );
