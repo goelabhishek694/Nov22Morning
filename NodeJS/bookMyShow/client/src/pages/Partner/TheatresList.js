@@ -5,7 +5,7 @@ import { showLoading, hideLoading } from "../../redux/loaderSlice";
 import { useDispatch } from "react-redux";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import TheatreFormModal from "./TheatreFormModal";
-import DeleteTheatreModal from "./DeleteTheatreModal";
+import DeleteTheatreModal from "./DeleteTheatreModal"
 function TheatresList() {
   const [theatres, setTheatres] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
