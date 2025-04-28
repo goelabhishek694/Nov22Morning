@@ -1,5 +1,5 @@
 const showRouter = require("express").Router();
-const { addShow, updateShow, deleteShow, getAllShowsByTheatre} = require("../controller/shows");
+const { addShow, updateShow, deleteShow, getAllShowsByTheatre, getAllTheatresByMovie, getShowById} = require("../controller/shows");
 
 //add a show
 showRouter.post("/", addShow);
@@ -11,10 +11,13 @@ showRouter.put("/:id", updateShow)
 showRouter.delete("/:id", deleteShow)
 
 //get all show
-showRouter.post("/het-all-shows-by-theatre", getAllShowsByTheatre)
+showRouter.post("/get-all-shows-by-theatre", getAllShowsByTheatre)
 
 //get all theatres by movie which have some shows
-showRouter.post("/get-all-theatres-by-movie", )
+showRouter.post("/get-all-theatres-by-movie", getAllTheatresByMovie)
+
+//get show by id
+showRouter.get("/:id", getShowById)
 
 
 module.exports = showRouter;

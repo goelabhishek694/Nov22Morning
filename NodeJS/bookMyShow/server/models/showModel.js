@@ -15,7 +15,7 @@ const showSchema = new mongoose.Schema({
     },
     movie: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "movies",
+        ref: "movie",
     },
     ticketPrice: {
         type: Number,
@@ -26,8 +26,8 @@ const showSchema = new mongoose.Schema({
         required:true
     },
     bookedSeats: {
-        type:Number,
-        required:true
+        type:Array,
+        default: []
     },
     theatre: {
         type: mongoose.Schema.Types.ObjectId,
