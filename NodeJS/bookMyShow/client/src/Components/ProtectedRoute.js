@@ -67,7 +67,7 @@ function ProtectedRoute({ children }) {
 
   const getValidUser = async () => {
     try {
-      dispatch(showLoading());
+      // dispatch(showLoading());
       const response = await GetCurrentUser();
       console.log(response)
       dispatch(setUser(response.data));

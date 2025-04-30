@@ -70,7 +70,7 @@ exports.getAllTheatresByMovie = async (req, res) => {
   try {
     const { movie, date } = req.body;
     //get all the shows of the selected date
-    const shows = await Show.find({ movie, date }).populate("theatres");
+    const shows = await Show.find({ movie, date }).populate("theatre");
 
     //filter out unique theatres nwo
     let uniqueTheatres = [];
@@ -104,9 +104,9 @@ exports.getAllTheatresByMovie = async (req, res) => {
 
 exports.getShowById = async (req, res) => {
   try {
-    const show = await Show.findById(req.body.showId)
-      .populate("movies")
-      .populate("theatres");
+    const show = await Show.findById(req.params.id)
+      .populate("movie")
+      .populate("theatre");
     res.send({
       success: true,
       message: "All shows fetched",

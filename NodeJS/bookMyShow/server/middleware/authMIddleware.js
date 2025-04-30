@@ -5,7 +5,7 @@ module.exports = function(req, res ,next){
         console.log("in middleware");
         
         const token = req.headers.authorization.split(" ")[1];
-        console.log("token from middleware", token);
+        console.log("token from middleware", token, req.headers.authorization);
         
         const verifiedToken = jwt.verify(token, process.env.jwt_secret);
         console.log("verifiedToken", verifiedToken);

@@ -66,3 +66,19 @@ exports.deleteMovie = async (req, res) => {
         })
     }
 }
+exports.movieById = async (req, res) => {
+    try{
+        const {id:movieId} = req.params;
+        const movie = await Movie.findById(movieId);
+        res.send({
+            success: true,
+            message: "movie retrieved successfully",
+            data: movie
+        })
+    }catch(err){
+        res.send({
+            success: false,
+            message: err.message
+        })
+    }
+}
