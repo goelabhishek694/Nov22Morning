@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../redux/loaderSlice";
 import { getShowById } from "../calls/shows";
 import { useParams } from "react-router-dom";
-import { Card, Col, message, Row } from "antd";
+import { Card, Col, message, Row, Button } from "antd";
 import moment from "moment";
+import StripeCheckout from "react-stripe-checkout";
 function BookShow() {
   const params = useParams();
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ function BookShow() {
   useEffect(() => {
     getData();
   }, []);
+
+  const onToken = (token) => {
+    console.log(token);
+  }
 
   const getSeats = () => {
     //static data , use dyanmic
@@ -134,7 +139,11 @@ function BookShow() {
             >
               {getSeats()}
 
-              {selectedSeats.length > 0 && <li> {selectedSeats} </li>}
+              {selectedSeats.length > 0 && <StripeCheckout token={onToken} billingAddress amount={selectedSeats.length * show.ticketPrice*100} stripeKey="pk_test_2VmtDx5s0gIh5ojgsvijNrLa00GNgwwfEN">
+              <div className="max-width-600 mx-auto">
+                        <Button type="primary" shape="round" size="large" block>Pay Now</Button>
+                    </div>
+                </StripeCheckout>}
             </Card>
           </Col>
         </Row>
