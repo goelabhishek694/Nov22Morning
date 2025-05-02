@@ -1,14 +1,14 @@
 const bookingRouter = require("express").Router();
-const { addMovie, getAllMovies, updateMovie, deleteMovie, movieById} = require("../controller/movie");
-
+const { makePayment, bookShow, getAllBookings} = require("../controller/booking");
+const authMiddleware = require("../middleware/authMIddleware");
 //add a booking
-bookingRouter.post("/make-payment", makePayment);
+bookingRouter.post("/make-payment", authMiddleware, makePayment);
 
 //get all booking
-bookingRouter.get("/book-show", getAllMovies)
+bookingRouter.post("/book-show", authMiddleware, bookShow)
 
 //update a booking
-bookingRouter.put("/get-all-bookings", updateMovie)
+bookingRouter.get("/all-bookings", authMiddleware, getAllBookings)
 
 
 module.exports = bookingRouter;

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../redux/loaderSlice";
 import { getShowById } from "../calls/shows";
 import { useParams } from "react-router-dom";
 import { Card, Col, message, Row, Button } from "antd";
 import moment from "moment";
 import StripeCheckout from "react-stripe-checkout";
+import { bookShow, makePayment } from "../calls/booking";
+import { useNavigate } from "react-router-dom";
 function BookShow() {
   const params = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((store) => store.users);
   const [show, setShow] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const getData = async () => {
@@ -33,8 +37,42 @@ function BookShow() {
     getData();
   }, []);
 
-  const onToken = (token) => {
-    console.log(token);
+  const book = async (transactionId) => {
+    try{
+      const response = await bookShow({
+        show: params.id,
+        user: user._id,
+        seats: selectedSeats,
+        transactionId
+      });
+      if (response.success) {
+        message.success("show has been booked!");
+        navigate("/profile");
+      } else {
+        message.error(response.message);
+      }
+      dispatch(hideLoading());
+    }catch(err){
+      message.error(err.message);
+      dispatch(hideLoading());
+    }
+  }
+
+  const onToken = async (token) => {
+    try{
+      dispatch(showLoading());
+      const response = await makePayment({token, amount: selectedSeats.length * show.ticketPrice*100});
+      if(response.success){
+        message.success(response.message);
+        book(response.data);
+      }else{
+        message.error(response.message);
+      }
+      dispatch(hideLoading());
+    }catch(err){
+      message.error(err.message);
+      dispatch(hideLoading())
+    }
   }
 
   const getSeats = () => {

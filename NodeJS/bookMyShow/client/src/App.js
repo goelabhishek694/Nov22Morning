@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import ProtectedRoute from './Components/ProtectedRoute';
 import Admin from './pages/Admin';
 import Partner from './pages/Partner';
+import Profile from './pages/Profile';
 import SingleMovie from './pages/SingleMovie';
 import BookShow from './pages/BookShow';
 
@@ -18,7 +19,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}></Route>
-        {/* <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}></Route> */}
+        <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}></Route>
         <Route path='/partner' element={<ProtectedRoute><Partner/></ProtectedRoute>}></Route>
         <Route path='/movie/:id' element={<ProtectedRoute><SingleMovie/></ProtectedRoute>}></Route>
         <Route path='/book-show/:id' element={<ProtectedRoute><BookShow/></ProtectedRoute>}></Route>

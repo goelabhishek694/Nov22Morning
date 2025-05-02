@@ -1,5 +1,6 @@
 const stripe = require('stripe')(process.env.stripe_key);
 const Booking = require("../models/bookingModel");
+const Show = require('../models/showModel');
 exports.makePayment = async(req, res) => {
     try{
         const {token,amount} = req.body;
@@ -29,5 +30,59 @@ exports.makePayment = async(req, res) => {
             message: err.message
         })
 
+    }
+}
+
+exports.bookShow = async (req, res) => {
+    try{
+        const newBooking = new Booking(req.body);
+        await newBooking.save();
+
+        const show = await Show.findById(req.body.show).populate("show");
+        const updatedBookedSeats = [...show.bookedSeats, ...req.body.seats];
+        await Show.findByIdAndUpdate(req.body.show, {bookedSeats:updatedBookedSeats});
+
+        res.send({
+            success: true,
+            message: 'new booking done !',
+            data: newBooking
+        })
+    }catch(err){
+        res.send({
+            success: false,
+            message: err.message
+        })
+    }
+}
+
+exports.getAllBookings = async (req, res) => {
+    try{
+        const bookings = await Booking.find({ user: req.userId})
+        .populate("user")
+        .populate("show")
+            .populate({
+                path: "show",
+                populate : {
+                    path: "movie",
+                    model: "movie"
+                }
+            })
+            .populate({
+                path: "show",
+                populate : {
+                    path: "theatre",
+                    model: "theatre"
+                }
+            })
+            res.send({
+                success: true,
+                message: 'booking fetched !',
+                data: bookings
+            })
+    }catch(err){
+        res.send({
+            success: false,
+            message: err.message
+        })
     }
 }
