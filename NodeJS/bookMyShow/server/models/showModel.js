@@ -35,4 +35,4 @@ const showSchema = new mongoose.Schema({
     }
 }, {timestamps: true});
 
-module.exports = mongoose.model("shows", showSchema);
+module.exports = mongoose.model("show", showSchema);
