@@ -115,7 +115,7 @@ function MovieList() {
         >
           Add Movie
         </Button>
-      </div>
+    </div>
       <Table dataSource={movies} columns={tableHeadings} />;
       { isModalOpen && (
         <MovieForm

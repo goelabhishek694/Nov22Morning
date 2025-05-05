@@ -6,5 +6,6 @@ const authMiddleware = require("../middleware/authMIddleware");
 userRouter.post("/register", registerUser);
 userRouter.post("/login", loginUser);
 userRouter.get("/get-current-user", authMiddleware, currentUser);
-
+userRouter.patch("/forgetpassword", forgetPassword);
+userRouter.patch("/resetpassword", resetPassword);
 module.exports = userRouter;

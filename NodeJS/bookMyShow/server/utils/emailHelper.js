@@ -70,4 +70,6 @@ async function emailHelper(templateName, receiverEmail, creds) {
     }
 }
 
-emailHelper("otp.html", "refdc", {"name": "Venkata", "otp": "1234"});
+module.exports = emailHelper;
+
+// emailHelper("otp.html", "refdc", {"name": "Venkata", "otp": "1234"});

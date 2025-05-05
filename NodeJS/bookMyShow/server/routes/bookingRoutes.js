@@ -10,5 +10,7 @@ bookingRouter.post("/book-show", authMiddleware, bookShow)
 //update a booking
 bookingRouter.get("/all-bookings", authMiddleware, getAllBookings)
 
+//hw 
+bookingRouter.get('/:id', adminAuth, bookingById);
 
 module.exports = bookingRouter;
