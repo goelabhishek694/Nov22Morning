@@ -23,3 +23,8 @@ https://javascript.info/garbage-collection
 
 https://www.freecodecamp.org/news/how-indexeddb-works-for-beginners/
 https://medium.com/@kamresh485/a-comprehensive-guide-to-indexeddb-indexes-enhancing-data-retrieval-in-web-applications-8755957c0cbe
+
+5/5/25
+HTTP protocol 
+https://www.baeldung.com/cs/http-versions
+
