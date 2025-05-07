@@ -1,10 +1,11 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const emailHelper = require("../utils/emailHelper");
+const bcrypt = require("bcrypt");
 
 exports.registerUser = async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, password } = req.body;
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.json({
@@ -12,7 +13,9 @@ exports.registerUser = async (req, res) => {
         success: false,
       });
     }
-    const newUser = new User(req.body);
+    const saltRounds = 10; //the higher the number the more secure but slower the hashing process
+    const hashedPasword = await bcrypt.hash(password, saltRounds);
+    const newUser = new User({...req.body, password: hashedPasword});
     await newUser.save();
 
     res.json({
@@ -39,19 +42,30 @@ exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
+    {
+      "username": {"$gt": ""},
+      "password": {"$gt": ""},
+    }
     if (!user) {
       return res.status(401).json({
         message: "User does not exist. Please register",
         success: false,
       });
     }
-    //simplified password validation where we are storing passwords in plain text
-    if (password !== user.password) {
+    const isMatch = await bcrypt.compare(password, user.password);
+    if(!isMatch){
       return res.status(401).json({
         message: "Invalid Credentials",
         success: false,
       });
     }
+    //simplified password validation where we are storing passwords in plain text
+    // if (password !== user.password) {
+    //   return res.status(401).json({
+    //     message: "Invalid Credentials",
+    //     success: false,
+    //   });
+    // }
 
     const token = jwt.sign(
       { userId: user["_id"], name: user.name },

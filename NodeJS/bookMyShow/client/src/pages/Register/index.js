@@ -101,7 +101,7 @@ function Register() {
                   className="flex-start"
                   >
                     <Radio value={'partner'}>Yes</Radio>
-                    <Radio value={'partner'}>No</Radio>
+                    <Radio value={'user'}>No</Radio>
                   </Radio.Group>
                 </div>
               </Form.Item>

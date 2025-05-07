@@ -11,6 +11,6 @@ bookingRouter.post("/book-show", authMiddleware, bookShow)
 bookingRouter.get("/all-bookings", authMiddleware, getAllBookings)
 
 //hw 
-bookingRouter.get('/:id', adminAuth, bookingById);
+// bookingRouter.get('/:id', adminAuth, bookingById);
 
 module.exports = bookingRouter;
