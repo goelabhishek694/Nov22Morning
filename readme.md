@@ -31,3 +31,8 @@ https://www.baeldung.com/cs/http-versions
 7/5/25
 https://stackoverflow.com/questions/24843689/whats-the-meaning-of-admin-or-1-1
 https://portswigger.net/web-security/nosql-injection#:~:text=NoSQL%20operator%20injection,-NoSQL%20databases%20often&text=Examples%20of%20MongoDB%20query%20operators,values%20specified%20in%20an%20array
+
+12/5/25
+https://developer.okta.com/blog/2019/06/18/command-line-app-with-nodejs
+https://github.com/sindresorhus/awesome-nodejs
+https://github.com/enaqx/awesome-react
