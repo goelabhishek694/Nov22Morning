@@ -2,16 +2,13 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-
-function calculateFibonacci(number) {
-    if(number<=1) return number;
-    return calculateFibonacci(number-1) + calculateFibonacci(number-2);
-}
-
+const {fork} = require("child_process");
+const path = require("path");
 app.use(cors());
 
 app.get("/fib", (req, res) => {
     const {number, requestNumber} = req.query;
+    console.log("handler fn ran for req", requestNumber);
     if(!number || isNaN(number) || number<=0){
         return res.status(400).json({
             success: false,
@@ -19,11 +16,22 @@ app.get("/fib", (req, res) => {
         })
     }
 
-    const answer = calculateFibonacci(number);
-    return res.status(200).json({
-        success: true,
-        message: "fibonacci calculated",
-        data: answer
+    // const answer = calculateFibonacci(number);
+    //creating a child process
+    const fiboRes = fork(path.join(__dirname, 'fiboWorker.js'));
+    //sending data to child process -> can be done viar fork only. spwan cannot be used ot send data form parent to child . IPC at play 
+    fiboRes.send({number:parseInt(number,10)});
+    //receiving data from child process 
+    fiboRes.on("message", (answer) => {
+        console.log("sending response for req ", requestNumber);
+        res.status(200).json({
+            success: true,
+            message: "fibonacci calculated",
+            data: answer,
+            requestNumber
+        })
+        //kill the child process
+        fiboRes.kill();
     })
 });
 

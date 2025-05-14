@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
             // get the data and process it and save it to db 
         }
     }
-    else if(req.url == '/{login')
+    else if(req.url == '/{login'){
         res.setHeader("Content-Type", 'text/html');
         // res.write("Hello World ! I am Logging in ");
         res.write(`<html><head><title>Node.js HTTP Server</title></head><body>`)
